@@ -1,8 +1,29 @@
 import readline from "readline-sync";
 import { colors } from "./src/util/Colors";
+import { Conta } from "./src/models/Conta";
 
 export function main() {
   let option: number;
+
+  const conta1: Conta = new Conta(40028922, 722, 2, "João Henrique", 0);
+  const conta2: Conta = new Conta(22982004, 122, 1, "Matheus Silva", 0);
+  console.log(
+    "\n****************************************************************"
+  );
+  conta1.depositar(5000);
+  conta1.sacar(3000);
+  conta1.visualizarConta();
+  console.log(
+    "\n****************************************************************"
+  );
+  // separar conta 1 da conta 2 -----------
+  conta2.depositar(10000);
+  conta2.sacar(6000);
+  conta2.visualizarConta();
+  console.log(
+    "****************************************************************\n"
+  );
+
   while (true) {
     console.log(
       colors.bg.black,
