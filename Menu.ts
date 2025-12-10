@@ -1,28 +1,48 @@
 import readline from "readline-sync";
 import { colors } from "./src/util/Colors";
 import { Conta } from "./src/models/Conta";
+import { ContaCorrente } from "./src/models/ContaCorrente";
+import { ContaPoupanca } from "./src/models/ContaPoupança";
 
 export function main() {
   let option: number;
+  //aqui criando duas contas para testar
+  const contaCorrente: ContaCorrente = new ContaCorrente(
+    1234,
+    567,
+    1,
+    "João Henrique Cavalcanti da Silva",
+    10000,
+    5000
+  );
+  const contaPoupanca: ContaPoupanca = new ContaPoupanca(
+    4321,
+    765,
+    2,
+    "Maria da Silva",
+    20000,
+    15
+  );
 
-  const conta1: Conta = new Conta(40028922, 722, 2, "João Henrique", 0);
-  const conta2: Conta = new Conta(22982004, 122, 1, "Matheus Silva", 0);
   console.log(
     "\n****************************************************************"
   );
-  conta1.depositar(5000);
-  conta1.sacar(3000);
-  conta1.visualizarConta();
+  contaCorrente.depositar(5000);
+  contaCorrente.sacar(3000);
+  contaCorrente.visualizar();
   console.log(
     "\n****************************************************************"
   );
   // separar conta 1 da conta 2 -----------
-  conta2.depositar(10000);
-  conta2.sacar(6000);
-  conta2.visualizarConta();
+  contaPoupanca.depositar(10000);
+  contaPoupanca.sacar(6000);
+  contaPoupanca.visualizar();
   console.log(
     "****************************************************************\n"
   );
+
+  contaPoupanca.visualizarConta();
+  contaCorrente.visualizarConta();
 
   while (true) {
     console.log(

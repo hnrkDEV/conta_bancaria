@@ -1,4 +1,4 @@
-export class Conta {
+export abstract class Conta {
   //atributos
   private _numero: number;
   private _agencia: number;
@@ -61,9 +61,9 @@ export class Conta {
     switch (this._tipo) {
       case 1:
         tipo = "Conta corrente";
+        break;
       case 2:
         tipo = "Conta poupança";
-
         break;
 
       default:
