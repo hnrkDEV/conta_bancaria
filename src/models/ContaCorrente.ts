@@ -13,7 +13,7 @@ export class ContaCorrente extends Conta {
     saldo: number,
     limite: number
   ) {
-    super(numero, agencia, tipo, titular, saldo);
+    super(numero, agencia, tipo, titular, saldo + limite); // aqui tive que passar o limite somando com o saldo pra que o saldo total apareça corretamente
     this._limite = limite;
   }
 
@@ -26,9 +26,17 @@ export class ContaCorrente extends Conta {
   }
   //métodos
   public sacar(valor: number): void {
-    if (valor > this.saldo + this._limite) {
+    console.log("Bateu aqui no sacar");
+    /*if (valor > this.saldo  + this._limite <- estava com isso antes, mas não precisa mais, pois o saldo já considera o limite
+    ) {
       console.log("Saldo insuficiente!");
+    } */
+    if (valor < this.limite) {
+      this.limite = this.limite - valor;
+      this.saldo = this.saldo - valor;
+      console.log(`Saque de R$${valor} realizado com sucesso!`);
     } else {
+      this.limite = 0;
       this.saldo = this.saldo - valor;
       console.log(`Saque de R$${valor} realizado com sucesso!`);
     }

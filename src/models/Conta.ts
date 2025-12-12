@@ -1,3 +1,5 @@
+import { ContaCorrente } from "./ContaCorrente";
+
 export abstract class Conta {
   //atributos
   private _numero: number;
@@ -69,11 +71,19 @@ export abstract class Conta {
       default:
         break;
     }
+    console.log("=====================================");
     console.log(`numero da conta: ${this._numero}`);
     console.log(`numero da agencia: ${this._agencia}`);
     console.log(`tipo da conta: ${tipo}`);
     console.log(`nome do titular: ${this._titular}`);
-    console.log(`saldo total da conta: ${this._saldo}`);
+    if (this._tipo === 1) {
+      console.log(`limite da conta: ${(this as any).limite}`);
+      console.log(`saldo + limite: ${this._saldo}`);
+    } else if (this._tipo === 2) {
+      console.log(`saldo total da conta: ${this._saldo}`);
+      console.log(`aniversario da conta: ${(this as any).aniversario}`);
+    }
+    console.log("=====================================\n");
   }
 
   depositar(valor: number) {
